@@ -1,0 +1,3 @@
+a = ['CBCABBAC', 'BBABCABA', 'ABCBCCCA', 'BACCAABB', 'BCBCACBC', 'CABACACB', 'CAAACCAB', 'CBABACAC']
+
+# 가로 회문에서 최대 찾기
