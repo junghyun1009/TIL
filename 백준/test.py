@@ -11,12 +11,5 @@ for first in tmp[0]:
         top = first[0]
         first.insert(0, bottom)
         max_num = max(list(set(a[0])-set(first)))
-
-        # tmp = tmp[1:]
-        # bottom = top
-        # for j in range(0, 3):
-        #     if bottom in tmp[0][j]:
-def findmax(bottom, dice_num):
-    for i in dice_num:
-        if bottom in i:
-            top = int(set(i)-set(bottom))
+        
+        print(max_num)
