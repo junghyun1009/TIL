@@ -20,3 +20,5 @@ def findmax(bottom, dice_num):
     for i in dice_num:
         if bottom in i:
             top = int(set(i)-set(bottom))
+            dice_num.remove(i)
+            max_num = max(set(dice_num)-{bottom, top})
