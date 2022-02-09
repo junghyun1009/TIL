@@ -1,15 +1,35 @@
-a = [[2, 3, 1, 6, 5, 4], [3, 1, 2, 4, 6, 5], [5, 6, 4, 1, 3, 2], [1, 3, 6, 2, 4, 5], [4, 1, 6, 5, 2, 3]]
-tmp = []
-max_sum = []
-for dice in a:
-    tmp.append([[dice[0], dice[5]], [dice[1], dice[3]], [dice[2], dice[4]]])
+m = [102, 16, 19, -108]
 
-for first in tmp[0]:
-    for i in range(0, 2):
-        bottom = first[i]
-        first.remove(bottom)
-        top = first[0]
-        first.insert(0, bottom)
-        max_num = max(list(set(a[0])-set(first)))
-        
-        print(max_num)
+a = [[-107,175,135], [-38,-115,42], [140,23,70], [148,-2,39], [-198,-49,89], [172,-151,39], [-179,-52,43], [148,42,150], [176,0,10], [153,68,120], [-56,109,16], [-187,-174,8]]
+
+cnt = 0
+
+    # 둘 다 같은 원에 있는 경우
+for i in a:
+    if pow((m[0]-i[0])**2+(m[1]-i[1])**2, 0.5) < i[2] and pow((m[2]-i[0])**2+(m[3]-i[1])**2,0.5) < i[2]:
+        break
+
+    elif pow((m[0]-i[0])**2+(m[1]-i[1])**2, 0.5) > i[2] and pow((m[2]-i[0])**2+(m[3]-i[1])**2,0.5) > i[2]:
+        break
+
+
+for i in a:
+    if pow((m[0]-i[0])**2+(m[1]-i[1])**2, 0.5) < i[2] and pow((m[2]-i[0])**2+(m[3]-i[1])**2, 0.5) > i[2]:
+        cnt += 1
+
+for j in a:
+    if pow((m[2]-j[0])**2+(m[3]-j[1])**2,0.5) < j[2] and pow((m[0]-j[0])**2+(m[1]-j[1])**2,0.5) > j[2]:
+        cnt += 1
+
+
+    # cnt = 0
+
+    # for i in a:
+    #     if (i[0]-i[2] < m[0] < i[0]+i[2]) and (i[1]-i[2] < m[1] < i[1]+i[2]):
+    #         cnt += 1
+
+    # for j in a:
+    #     if (j[0]-j[2] < m[2] < j[0]+j[2]) and (j[1]-j[2] < m[3] < j[1]+j[2]):
+    #         cnt += 1
+
+print(cnt)
