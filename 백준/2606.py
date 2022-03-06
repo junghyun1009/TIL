@@ -37,9 +37,8 @@ def dfs(start):
     visited[start] = 1
     for i in graph[start]:
         if visited[i] == 0:
-            dfs(i)
             cnt += 1
-
+            dfs(i)
 
 dfs(1)
 print(graph)
