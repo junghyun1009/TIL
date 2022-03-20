@@ -22,7 +22,8 @@
 - **Framework**
   - 재사용할 수 있는 수많은 코드를 프레임워크로 통합
   - 개발자가 새로운 애플리케이션을 위한 표준 코드를 다시 작성하지 않아도 됨
-
+  - 성격 : Opinionated (다소 독선적)
+  
 - **Web Framework**
   - 웹 페이지를 개발하는 과정에서 겪는 어려움을 줄이는 것이 주 목적
 
@@ -47,6 +48,8 @@
     3. views.py에서 필요한 경우 model과 상호작용하거나 template을 읽어옴
     4. HTTP 응답을 보냄(html의 형태)
     ```
+
+---
 
 
 
@@ -100,6 +103,8 @@
     - third party apps (pip install 등으로 설치한 앱)
     - django apps (장고 내 기본 앱)
 
+---
+
 
 
 ## 요청과 응답
@@ -125,6 +130,8 @@
 
 - **Templates**
   - Template 파일 경로의 기본 값은 app 폴더 안의 templates 폴더로 지정되어 있음
+
+---
 
 
 
@@ -215,6 +222,83 @@
     - 템플릿 시스템은 표현을 제어하는 도구이자 표현에 관련된 로직일 뿐
   - 중복을 배제
     - 상속
+
+---
+
+
+
+## HTML Form
+
+- **form**
+
+  - 사용자 정보를 입력하는 여러 방식 제공, 사용자로부터 할당된 데이터를 서버로 전송
+
+  - 핵심 속성
+    - **action** : 입력 데이터가 전송될 URL 지정
+    - **method** : 입력 데이터 전달 방식 지정
+
+- **input**
+  - 사용자로부터 데이터를 입력 받기 위해 사용
+  - 핵심 속성
+    - **name** 
+      - name이라는 이름에 설정된 값을 넘겨서 가져올 수 있음
+      - GET / POST 방식으로 서버에 전달하는 파라미터로 매핑
+        - GET : `?key=value&key=value` 형식으로 데이터 전달
+
+- **label**
+  - 사용자 인터페이스 항목에 대한 설명
+  - input 요소와 연결하기
+    - input의 id 속성과 label의 for 속성 맞춰주기
+      - **for**
+        - for 속성의 값과 일치하는 id를 가진 문서의 첫 번째 요소 제어
+      - **id**
+        - 고유해야하는 식별자 정의
+
+- **HTTP**
+  - HyperText Transfer Protocol
+  - 웹에서 이루어지는 모든 데이터 교환의 기초
+  - 수행할 작업을 나타내는 request methods를 정의
+    - GET, POST, PUT, DELETE
+    - **GET**
+      - 서버로부터 정보 조회
+      - 데이터를 가져올 때만 사용해야 함
+      - 데이터를 서버로 전송할 때 Query String Parameters를 통해 전송
+
+---
+
+
+
+## URL
+
+- 웹 애플리케이션은 URL을 통한 클라이언트의 요청에서부터 시작됨
+- **Variable Routing**
+  - URL 주소를 변수로 사용, view 함수의 인자로 넘길 수 있음
+
+- URL Path converters
+  - **str**
+    - 비어 있지 않은 모든 문자열과 매치 (' / ' 제외)
+    - 작성하지 않을 경우 기본값
+  - **int**
+    - 0 또는 양의 정수와 매치
+  - **slug**
+    - ASCII 문자, 숫자, -, _ 로 구성된 모든 문자열과 매치 
+
+- App URL mapping
+  - 모든 것을 프로젝트의 urls.py에서 관리하는 것은 유지보수에 좋지 않음
+  - **각 app에 urls.py 작성**
+  - `include()`
+    - 다른 URLconf (app1/urls.py)들을 참조할 수 있도록 도움
+    - `include()`를 만나면 URL의 그 시점까지 일치하는 부분을 잘라내고, include된 URLconf로 전달
+  - 명시적 상대경로(`from .module import..`) 권장
+
+- Naming URL Patterns
+  - path() 함수의 name 인자 정의해서 사용
+  - url 태그 사용해서 path() 함수에 작성한 name 사용
+    - `{ % url '' % }`
+      - 주어진 URL 패턴 이름 및 선택적 매개 변수와 일치하는 절대 경로 주소 반환
+      - DRY 원칙 위반하지 않으면서 링크 출력
+
+---
 
 
 
