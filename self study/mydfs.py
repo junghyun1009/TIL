@@ -1,6 +1,4 @@
-import sys
-
-sys.stdin = open('input.txt')
+# swea_4871
 
 def dfs(s, g):
     stack = []
@@ -9,7 +7,7 @@ def dfs(s, g):
 
     while stack:
         now = stack[-1]
-        for i in range(1, v+1):
+        for i in range(1, v + 1):
             if graph[now][i] == 1 and visited[i] == 0:
                 if i == g:
                     return 1
@@ -22,8 +20,8 @@ def dfs(s, g):
 
     return 0
 
-T = int(input())
 
+T = int(input())
 
 for tc in range(1, T + 1):
 
@@ -31,11 +29,11 @@ for tc in range(1, T + 1):
     a = [list(map(int, input().split())) for _ in range(e)]
     s, g = map(int, input().split())
 
-    graph = [[0]*(v+1) for _ in range(v+1)]
-    visited = [0] * (v+1)
+    graph = [[0] * (v + 1) for _ in range(v + 1)]
+    visited = [0] * (v + 1)
 
     for i in a:
         graph[i[0]][i[1]] = 1
-    
+
     print(f'#{tc} {dfs(s, g)}')
 
