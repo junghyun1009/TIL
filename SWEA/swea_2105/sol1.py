@@ -32,7 +32,6 @@ def dfs(r, c):
                     dessert.append(a[nx][ny])
                     x, y = stack[-1]
                     cnt_a += 1
-                    print(1, cnt_a)
 
                 else:
                     i += 1
@@ -43,7 +42,6 @@ def dfs(r, c):
                     dessert.append(a[nx][ny])
                     x, y = stack[-1]
                     cnt_b += 1
-                    print(2, cnt_b)
 
                 else:
                     i += 1
@@ -51,7 +49,7 @@ def dfs(r, c):
             elif i == 2:
                 while True:
                     if cnt_c == cnt_a:
-                        print(3, cnt_c)
+                        i += 1
                         break
 
                     if 1 <= nx < n-1 and 0 <= ny < n-2 and a[nx][ny] not in dessert:
@@ -59,7 +57,6 @@ def dfs(r, c):
                         dessert.append(a[nx][ny])
                         x, y = stack[-1]
                         cnt_c += 1
-                        print(3, cnt_c)
 
                     else:
                         i += 1
@@ -67,6 +64,7 @@ def dfs(r, c):
             else:
                 while True:
                     if cnt_d == cnt_b:
+                        i += 1
                         break
 
                     if 0 <= nx < n-2 and 1 <= ny < n-1 and a[nx][ny] not in dessert:
@@ -74,7 +72,6 @@ def dfs(r, c):
                         dessert.append(a[nx][ny])
                         x, y = stack[-1]
                         cnt_d += 1
-                        print(4, cnt_d)
 
                     elif [nx, ny] == stack[0]:
                         cnt_d += 1
@@ -90,7 +87,7 @@ for tc in range(1, T + 1):
     n = int(input())
     a = [list(map(int, input().split())) for _ in range(n)]
 
-    print(dfs(0, 1))
+    print(dfs(0, 2))
     
     print(f'#{tc} ')
 
