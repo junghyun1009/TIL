@@ -1,4 +1,15 @@
-from itertools import combinations
+def dfs(s, tmp):
+    if len(tmp) == M:
+        comb.append(tmp)
+        return
+
+    for i in range(s, len(chicken)):
+        if visited[i] == 0:
+            visited[i] = 1
+            # print(tmp+chicken[i])
+            dfs(i+1, tmp + [chicken[i]])
+            visited[i] = 0
+
 
 N, M = map(int, input().split())
 city = [list(map(int, input().split())) for _ in range(N)]
@@ -12,12 +23,19 @@ for r in range(N):
             house.append([r, c])
         elif city[r][c] == 2:
             chicken.append([r, c])
+# print(chicken)
 
-pick = list(combinations(chicken, M))
-# print(pick)
+comb = []
+visited = [0] * len(chicken)
+dfs(0, [])
+# print(comb)
+
+
+# pick = list(combinations(chicken, M))
+# # print(pick)
 
 min_rlt = 999999
-for i in pick:
+for i in comb:
     rlt = 0
     for j in house:
         min_route = 999999
@@ -29,3 +47,4 @@ for i in pick:
     if min_rlt > rlt:
         min_rlt = rlt
 print(min_rlt)
+
