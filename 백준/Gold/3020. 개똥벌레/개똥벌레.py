@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 def under_search(s, e):
     global pivot
 
